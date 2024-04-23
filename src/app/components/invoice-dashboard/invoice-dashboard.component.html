@@ -1,0 +1,83 @@
+<div class="grid-container">
+    <kendo-grid 
+    [data]="gridView"
+    [pageSize]="take"
+    [skip]="skip"
+    [height]="500"
+    [pageable]="true"
+    (pageChange)="pageChangeHandler($event)" 
+    [reorderable]="true"   
+    [filterable]="true"
+    [filter]="filter"
+    (filterChange)="filterChange($event)"
+    [groupable]="true"
+    [group]="groups"
+    (groupChange)="groupChange($event)"
+    [sortable]="true"
+    [sort]="sort"
+    (sortChange)="sortChange($event)" 
+    (add)="addHandler($event)"
+    (edit)="editHandler($event)"
+    (cancel)="cancelHandler($event)"
+    (save)="saveHandler($event)"
+    (remove)="removeHandler($event)"
+    >
+    <ng-template kendoGridToolbarTemplate>
+        <button kendoGridAddCommand>Add</button>
+    </ng-template>
+
+    <kendo-grid-column 
+        title="Invoice ID" 
+        [filterable]="false"
+        [width]="100"
+        >
+        <ng-template kendoGridCellTemplate let-gridView>
+            {{'INV0' + gridView.id}}
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column 
+        field="timesheet_id" 
+        title="Timesheet ID"
+        [width]="120"
+        >
+    </kendo-grid-column>
+    <kendo-grid-column 
+        field="worker_id" 
+        title="Worker ID"
+        [width]="100"
+        >
+    </kendo-grid-column>
+    <kendo-grid-column 
+        field="worker_name" 
+        title="Worker Name" 
+        [width]="220"
+        >
+    </kendo-grid-column>
+    <kendo-grid-column 
+        field="total_amount" 
+        title="Total Amount" 
+        [width]="110"
+        >
+    </kendo-grid-column>
+    <kendo-grid-column 
+        field="organisation" 
+        title="Organisation" 
+        [width]="200"
+        >
+    </kendo-grid-column>
+    
+    <kendo-grid-column title="Actions" 
+        [reorderable]="false"
+        [sticky]="true"
+        [width]="220">
+        <ng-template kendoGridCellTemplate let-isNew="isNew">
+            <button kendoGridEditCommand (click)="onClick()"><i class="bi bi-pencil-square"></i></button>
+            <button kendoGridRemoveCommand (click)="onClick()">Remove</button>
+            <button kendoGridSaveCommand>
+                {{ isNew ? 'Add' : "Update" }}</button>
+            <button kendoGridCancelCommand>{{ isNew ? 'Discard Changes' : 'Cancel'}} </button>
+        </ng-template>
+    </kendo-grid-column>
+</kendo-grid>
+<app-loader [isLoading]="isLoading"></app-loader>
+</div>
