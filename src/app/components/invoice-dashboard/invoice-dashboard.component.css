@@ -1,3 +1,23 @@
 .grid-container{
     position: relative;
 }
+
+.action-button{
+    border:none;
+    background : none;
+    padding : 3px;
+    cursor : pointer;
+    outline: none;
+}
+
+.grid-container ::ng-deep kendo-grid-group-panel,
+.grid-container ::ng-deep kendo-grid-toolbar {
+    background-color: black; /* Set the background color of the toolbar */
+    color: white; /* Set the text color of the toolbar */
+    /* Add any additional styles as needed */
+}
+
+.addInvoice{
+    font-weight: bold;
+    margin-left : 5px;
+}

@@ -141,8 +141,8 @@ export class InvoiceDashboardComponent implements OnInit {
     this.closeEditor(args.sender);
 
     this.formGroup = new FormGroup({
-      id: new FormControl(this.lastInvoice+1,Validators.required),
-      timesheet_id: new FormControl("",Validators.required),
+      id: new FormControl(this.lastInvoice+1),
+      timesheet_id: new FormControl(0),
       worker_id: new FormControl("",Validators.required),
       worker_name: new FormControl("",Validators.required),
       total_amount: new FormControl(0,Validators.required),
